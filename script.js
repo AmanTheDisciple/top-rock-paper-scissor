@@ -7,8 +7,10 @@ function playGame(){
     let humanScoreNode = document.querySelector("#human-score").querySelector('.player-score');
     let computerScoreNode = document.querySelector("#computer-score").querySelector('.player-score');
 
-    let outcomeMessageNode = document.getElementsByClassName("outcome");
+    let outcomeMessageNode = document.querySelector(".outcome");
 
+    // FIVE ROUND LOOP
+    
     rock.addEventListener('click',()=>{
         let computerChoice=getComputerChoice();
         let humanChoice="rock";
@@ -23,22 +25,31 @@ function playGame(){
                 let humanScore = humanScoreNode.textContent;
                 humanScore = +humanScore + 1;
                 humanScoreNode.textContent=humanScore;
+                document.querySelector('#human-score').querySelector('.player-choice').textContent=humanChoice;
+                document.querySelector('#computer-score').querySelector('.player-choice').textContent=computerChoice;
                 outcomeMessageNode.textContent = "You Win!";
+                break;
             case -1:
                 let computerScore = computerScoreNode.textContent;
                 computerScore = +computerScore + 1;
+                document.querySelector('#human-score').querySelector('.player-choice').textContent=humanChoice;
+                document.querySelector('#computer-score').querySelector('.player-choice').textContent=computerChoice;
                 computerScoreNode.textContent=computerScore;
                 outcomeMessageNode.textContent = "You Lose";
+                break;
             case 0:
+                document.querySelector('#human-score').querySelector('.player-choice').textContent=humanChoice;
+                document.querySelector('#computer-score').querySelector('.player-choice').textContent=computerChoice;
                 outcomeMessageNode.textContent = "Tie!";
+                break;
         }
-
     })
 
     paper.addEventListener('click',()=>{
         let computerChoice=getComputerChoice();
-        let humanChoice="rock";
+        let humanChoice="paper";
 
+        console.log('Human choice is '+humanChoice);
         console.log("Computer choice is "+computerChoice);
 
         let outcome = playRound(humanChoice,computerChoice);
@@ -48,22 +59,31 @@ function playGame(){
                 let humanScore = humanScoreNode.textContent;
                 humanScore = +humanScore + 1;
                 humanScoreNode.textContent=humanScore;
+                document.querySelector('#human-score').querySelector('.player-choice').textContent=humanChoice;
+                document.querySelector('#computer-score').querySelector('.player-choice').textContent=computerChoice;
                 outcomeMessageNode.textContent = "You Win!";
+                break;
             case -1:
                 let computerScore = computerScoreNode.textContent;
                 computerScore = +computerScore + 1;
+                document.querySelector('#human-score').querySelector('.player-choice').textContent=humanChoice;
+                document.querySelector('#computer-score').querySelector('.player-choice').textContent=computerChoice;
                 computerScoreNode.textContent=computerScore;
                 outcomeMessageNode.textContent = "You Lose";
+                break;
             case 0:
+                document.querySelector('#human-score').querySelector('.player-choice').textContent=humanChoice;
+                document.querySelector('#computer-score').querySelector('.player-choice').textContent=computerChoice;
                 outcomeMessageNode.textContent = "Tie!";
+                break;
         }
-
     })
-    
+
     scissors.addEventListener('click',()=>{
         let computerChoice=getComputerChoice();
-        let humanChoice="rock";
+        let humanChoice="scissors";
 
+        console.log('Human choice is '+humanChoice);
         console.log("Computer choice is "+computerChoice);
 
         let outcome = playRound(humanChoice,computerChoice);
@@ -73,19 +93,25 @@ function playGame(){
                 let humanScore = humanScoreNode.textContent;
                 humanScore = +humanScore + 1;
                 humanScoreNode.textContent=humanScore;
+                document.querySelector('#human-score').querySelector('.player-choice').textContent=humanChoice;
+                document.querySelector('#computer-score').querySelector('.player-choice').textContent=computerChoice;
                 outcomeMessageNode.textContent = "You Win!";
+                break;
             case -1:
                 let computerScore = computerScoreNode.textContent;
                 computerScore = +computerScore + 1;
+                document.querySelector('#human-score').querySelector('.player-choice').textContent=humanChoice;
+                document.querySelector('#computer-score').querySelector('.player-choice').textContent=computerChoice;
                 computerScoreNode.textContent=computerScore;
                 outcomeMessageNode.textContent = "You Lose";
+                break;
             case 0:
+                document.querySelector('#human-score').querySelector('.player-choice').textContent=humanChoice;
+                document.querySelector('#computer-score').querySelector('.player-choice').textContent=computerChoice;
                 outcomeMessageNode.textContent = "Tie!";
+                break;
         }
-
     })
-
-
 
     function getComputerChoice(){
         let randomNumber=Math.random()*10;
@@ -94,19 +120,17 @@ function playGame(){
         }else if(randomNumber<=6){
             return "paper";
         }else{
-            return "scissor";
+            return "scissors";
         }
     }
 
-    
-
     function playRound(humanChoice,computerChoice){
         switch(humanChoice){
-            case "scissor":
+            case "scissors":
                 switch(computerChoice){
                     case "paper":
                     return 1;
-                case "scissor":
+                case "scissors":
                     return 0;
                 case "rock":
                     return -1;
@@ -117,7 +141,7 @@ function playGame(){
                         return -1;
                     case "rock":
                         return 0;
-                    case "scissor":
+                    case "scissors":
                         return 1;
                 }
             case "paper":
@@ -126,32 +150,12 @@ function playGame(){
                         return 1;
                     case "paper":
                         return 0;
-                    case "scissor":
+                    case "scissors":
                         return -1;
                 }
             }       
     }
 
-    // --->FIVE ROUNDS<---
-
-    // for(let i=0;i<5;i++){
-    //     console.log(`Round ${i}`);
-    //     console.log(`Score
-    //                  You - Computer
-    //                  ${humanScore} | ${computerScore}`);
-    //     computerChoice=getComputerChoice();
-    //     humanChoice=getHumanChoice();
-    //     let outcome=playRound(humanChoice,computerChoice);
-    //     if(outcome==1){
-    //         console.log("You Win!");
-    //         humanScore++;
-    //     }else if(outcome==0){
-    //         console.log("Tie!");
-    //     }else{
-    //         console.log('You Lose!');
-    //         computerScore++;
-    //     }
-    // }
 
     // --------------------------------------
 
