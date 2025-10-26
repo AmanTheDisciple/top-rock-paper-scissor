@@ -36,11 +36,11 @@ You: ${humanChoice}!`);
             case "rock":
                 switch(computerChoice){
                     case "paper":                
-                        return 1;
+                        return -1;
                     case "rock":
                         return 0;
                     case "scissor":
-                        return -1;
+                        return 1;
                 }
             case "paper":
                 switch(computerChoice){
@@ -51,15 +51,6 @@ You: ${humanChoice}!`);
                     case "scissor":
                         return -1;
                 }
-            case "scissor":
-                switch(computerChoice){
-                    case "paper":
-                        return 1;
-                    case "scissor":
-                        return 0;
-                    case "rock":
-                        return -1;
-                    }
             }       
     }
 
