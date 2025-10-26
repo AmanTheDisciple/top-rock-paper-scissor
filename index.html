@@ -17,12 +17,16 @@
             margin: 20px;
         }
             
-        #rock, #paper, #scissors{
+        button{
             font-size: 16px;
             padding: 8px 16px;
             border-radius: 20px;
         }
         
+        #rematch{
+            display:none;
+        }
+
     </style>
 </head>
 <body>
@@ -60,14 +64,16 @@
     <span><b><em>Round</em></b></span>
     <span class="round-number"><b><em>1</em></b></span>
 
+    <h4 class="outcome">-</h4>
     <h3 class="prompt">Make your choice:</h3>
-    <h4 class="outcome"></h4>
 
     <div>
         <button id="rock">Rock</button>
         <button id="paper">Paper</button>
         <button id="scissors">Scissors</button>
     </div>
+    <br>
+    <button type="button" id="rematch">Rematch</button>
     <script src="script.js"></script>
 </body>
 </html>
