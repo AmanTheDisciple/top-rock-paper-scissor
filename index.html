@@ -4,8 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .score-board{
+            display: flex;
+            align-items: center;
+        }
+
+        .computer-score{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 10px;
+            }
+            
+            .human-score{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 10px;
+        }
+    </style>
 </head>
 <body>
+    <div class="heading">
+        <h1>Rock Paper Scissors</h1>
+    </div>
+    <div class="score-board">
+        <div class="human-score">
+            <h2>Human</h2>
+            <h3>0</h3>
+        </div>
+        <div>
+            |<br>
+            |<br>
+            |<br>
+            |<br>
+            |<br>
+        </div>
+        <div class="computer-score">
+            <h2>Computer</h2>
+            <h3>0</h3>
+        </div>
+    </div>
+    <div>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Paper</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
