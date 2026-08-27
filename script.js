@@ -9,81 +9,94 @@ function getSystemChoice(){
     }
 }
 
-function getNingenChoice(){
-    let choice=prompt("Enter your choice");
-    choice=choice.toLowerCase();
-    return choice;
-}
+let roundNumber=0;
 
-function playGame(){
-    let systemScore=0;
-    let ningenScore=0;
-    let roundNumber=0;
+function playRound(choice){
 
-    while(roundNumber<5){
-        let systemChoice=getSystemChoice();
-        let ningenChoice=getNingenChoice();
+    let systemScore=document.querySelector(".system");
+    let ningenScore=document.querySelector(".human");
 
-        if(systemChoice=="rock"){
-            if(ningenChoice=="rock"){
-                console.log("Rock vs Rock. Draw!");
-                roundNumber++;
-            }
-            else if(ningenChoice=="paper"){
-                console.log("Rock vs Paper. You Win!");
-                ningenScore++;
-                roundNumber++;
-            }else if(ningenChoice=="scissor" || ningenChoice=="scissors"){
-                console.log("Rock vs Scissors. You Lose.");
-                systemScore++;
-                roundNumber++;
-            }else{
-                console.log("Wrong input, try again.");
-            }
-        }else if(systemChoice=="paper"){
-            if(ningenChoice=="rock"){
-                console.log("Paper vs Rock. You Lose.");
-                systemScore++;
-                roundNumber++;
-            }
-            else if(ningenChoice=="paper"){
-                console.log("Paper vs Paper. Draw.");
-                roundNumber++;
-            }else if(ningenChoice=="scissor" || ningenChoice=="scissors"){
-                console.log("Paper vs Scissors. You Win!");
-                ningenScore++;
-                roundNumber++;
-            }else{
-                console.log("Wrong input, try again.");
-            }
-        }else{
-            if(ningenChoice=="rock"){
-                console.log("Scissors vs Rock. You Win.");
-                ningenScore++;
-                roundNumber++;
-            }
-            else if(ningenChoice=="paper"){
-                console.log("Scissors vs Paper. You Lose.");
-                systemScore++;
-                roundNumber++;
-            }else if(ningenChoice=="scissor" || ningenChoice=="scissors"){
-                console.log("Scissors vs Scissors. Draw.");
-                roundNumber++;
-            }else{
-                console.log("Wrong input, try again.");
-            }
+    let systemChoice=getSystemChoice();
+    let ningenChoice=choice;
+
+    let res=document.querySelector(".result");
+    
+    if(systemChoice=="rock"){
+        if(ningenChoice=="rock"){
+            res.textContent="Rock vs Rock. Draw!";
+            roundNumber++;
         }
-            
-    }
-
-    if(systemScore>ningenScore){
-        console.log("System-",systemScore,"Ningen-",ningenScore,"You Lose");
-    }else if(ningenScore>systemScore){
-        console.log("System-",systemScore,"Ningen-",ningenScore,"You Win");
+        else if(ningenChoice=="paper"){
+            res.textContent="Rock vs Paper. You Win!";
+            ningenScore.textContent= +ningenScore.textContent + 1;
+            roundNumber++;
+        }else if(ningenChoice=="scissors" || ningenChoice=="scissors"){
+            res.textContent="Rock vs Scissors. You Lose.";
+            systemScore.textContent=+systemScore.textContent + 1;
+            roundNumber++;
+        }else{
+            res.textContent="Wrong input,try again";
+        }
+    }else if(systemChoice=="paper"){
+            if(ningenChoice=="rock"){
+                res.textContent="Paper vs Rock. You Lose.";
+                systemScore.textContent = +systemScore.textContent + 1;
+                roundNumber++;
+            }
+            else if(ningenChoice=="paper"){
+                res.textContent="Paper vs Paper. Draw.";
+                roundNumber++;
+            }else if(ningenChoice=="scissors" || ningenChoice=="scissors"){
+                res.textContent="Paper vs Scissors. You Win!";
+                ningenScore.textContent= +ningenScore.textContent + 1;
+                roundNumber++;
+            }else{
+                res.textContent="Wrong input, try again.";
+            }
     }else{
-        console.log("System-",systemScore,"Ningen-",ningenScore,"Draw");
+            if(ningenChoice=="rock"){
+                res.textContent="Scissors vs Rock. You Win.";
+                ningenScore.textContent= +ningenScore.textContent + 1;
+                roundNumber++;
+            }
+            else if(ningenChoice=="paper"){
+                res.textContent="Scissors vs Paper. You Lose.";
+                systemScore.textContent= +systemScore.textContent+1;
+                roundNumber++;
+            }else if(ningenChoice=="scissors" || ningenChoice=="scissors"){
+                res.textContent="Scissors vs Scissors. Draw.";
+                roundNumber++;
+            }else{
+                res.textContent="Wrong input, try again.";
+            }
     }
     
+    if(roundNumber>=5){
+        systemScore=systemScore.textContent;
+        ningenScore=ningenScore.textContent;
+
+        document.querySelector(".rock").remove();
+        document.querySelector(".paper").remove();
+        document.querySelector(".scissors").remove();
+
+        if(systemScore>ningenScore){
+            res.textContent="System- "+systemScore+" Ningen- "+ningenScore+" You Lose";
+            
+        }else if(ningenScore>systemScore){
+            res.textContent="System- "+systemScore+" Ningen- "+ningenScore+" You Win";
+            
+        }else{
+            res.textContent="System- "+systemScore+" Ningen- "+ningenScore+" Draw";
+            
+        }
+
+    }
+
 }
 
-playGame();
+let test=document.querySelector(".human");
+console.log(test.textContent);
+
+document.querySelector(".rock").addEventListener("click",()=> playRound("rock"));
+document.querySelector(".paper").addEventListener("click",()=>playRound("paper"));
+document.querySelector(".scissors").addEventListener("click",()=>playRound("scissors"));
